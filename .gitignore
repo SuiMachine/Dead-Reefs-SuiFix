@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+# Garbo
+.vs/*
+source/log/*
+source/obj/*
