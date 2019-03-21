@@ -214,13 +214,15 @@ bool WINAPI DllMain(HMODULE hModule, DWORD fdwReason, LPVOID lpReserved) {
         GetModuleFileNameA(hm, path, sizeof(path));
         *strrchr(path, '\\') = '\0';
         strcat_s(path, "\\d3d9.ini");
-        bForceWindowedMode = GetPrivateProfileInt("MAIN", "ForceWindowedMode", 0, path) != 0;
-        fFPSLimit = static_cast<float>(GetPrivateProfileInt("MAIN", "FPSLimit", 0, path));
+		CIniReader ConfigReader(path);
+		bForceWindowedMode = ConfigReader.ReadInteger("MAIN", "ForceWindowedMode", 0) != 0;
+			
+        fFPSLimit = static_cast<float>(ConfigReader.ReadInteger("MAIN", "FPSLimit", 0));
         if (fFPSLimit)
             bFPSLimit = true;
 
-		hookSettings.scrWidth = GetPrivateProfileInt("MAIN", "Width", 1280, path);
-		hookSettings.scrHeight = GetPrivateProfileInt("MAIN", "Height", 960, path);
+		hookSettings.scrWidth = ConfigReader.ReadInteger("MAIN", "Width", 1280);
+		hookSettings.scrHeight = ConfigReader.ReadInteger("MAIN", "Height", 960);
 		scrWidth = hookSettings.scrWidth;
 		scrHeight = hookSettings.scrHeight;
 
