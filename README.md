@@ -1,4 +1,4 @@
-# Dead-Reefs-SuiFix
+# Dead Reefs - Sui's Fix
 Wrapper for Dead Reefs that also hooks in elements of a code to enable additional features. It's based on [ThirteenAG's D3D9 wrapper](https://github.com/ThirteenAG/d3d9-wrapper).
 
 # List of features
